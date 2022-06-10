@@ -1,0 +1,45 @@
+\question  
+\subsection*{Implemetação}
+Os gráficos foram gerados usando a linguagem Python usando Matplotlib e Numpy :
+\begin{minted}{python}
+    # -*- coding: utf-8 -*-
+    import numpy as np
+    import matplotlib.pyplot as plt
+
+    def young(x):
+        den = -np.power(x/20,2)*0.5
+        return np.exp(den)
+
+    def old(x):
+        den = -0.5*np.power((x-100)/30,2)
+        return np.exp(den)
+
+    if __name__ == '__main__':
+        
+        # Plot interval :
+        x = np.arange(1,100,0.5)
+        
+        plt.plot(x, young(x))
+        plt.title(r"$\mu _{young}$(x)")
+        plt.xlabel('x')
+        plt.ylabel(r"$\mu$(x)")
+        plt.show()
+        
+        plt.plot(x, old(x))
+        plt.title(r"$\mu_{old}$(x)")
+        plt.xlabel('x')
+        plt.ylabel(r"$\mu$(x)")
+        plt.show()
+\end{minted}
+
+\subsection*{Plots}
+Os resultados podem ser vistos abaixo :
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[scale = .5]{images/Figure 2022-06-08 111630 (0).png}
+    \includegraphics[scale = .5]{images/Figure 2022-06-08 111630 (1).png}
+    \caption{Plots das funções de pertinência \(\mu_{young}(x)\) e \(\mu_{old}(x)\) }
+\end{figure}
+
+
+

@@ -1,0 +1,91 @@
+\question A questão apresenta que para :
+\[U = \left\{Paris, \text{ } New \text{ } York\right\}\]
+\[V = \left\{Paris, \text{ } Beijing,\text{ } Otawa, \text{ } London\right\}\]
+\[W = \left\{Brujes, \text{ } Stockholm, \text{ } Moscow\right\}\]
+
+\section*{Relações Nebulosas}
+\subsection*{Muito Longe}
+    \[Q\left(U,V\right) = 
+    \begin{cases}
+        0 & U = V = Paris \\
+        0.8 & U = Paris, V = Beijing\\
+        0.6 & U = Paris, V = Otawa \\
+        0.25 & U = Paris, V = London \\
+        0.7 & U = New \text{ } York, V = Paris \\
+        0.98 & U = New \text{ } York, V = Beijing \\
+        0.15 & U = New \text{ } York, V = Otawa\\
+        0.5 & U = New \text{ } York, V = London
+    \end{cases}\]
+\subsection*{Muito Perto}
+    \[R\left(V,W\right) = 
+    \begin{cases}
+        1 & V = Paris, W = Brujes\\
+        0.4 & V = Paris , W = Stockholm \\
+        0.2 & V = Paris , W = Moscow \\
+        0.1 & V = Beijing , W = Brujes \\
+        0.4 & V = Beijing , W = Stockholm \\
+        0.7 & V = Beijing , W = Moscow \\
+        0.4 & V = Otawa , W = Brujes \\
+        0.15 & V = Otawa , W = Stockholm \\
+        0.05 & V = Otawa, W = Moscow \\
+        0.85 & V = London, W = Brujes \\
+        0.3 & V = London , W = Stockholm\\
+        0.1 & V = London , W = Moscow\\
+    \end{cases}\]
+\subsection*{Culturalmente Afins}
+    \[L\left(U, V\right) = 
+    \begin{cases}
+        1 & U = V = Paris \\
+        0.2 & U = Paris, V = Beijing\\
+        0.6 & U = Paris, V = Otawa \\
+        0.8 & U = Paris, V = London \\
+        0.85 & U = New \text{ } York, V = Paris \\
+        0.3 & U = New \text{ } York, V = Beijing \\
+        0.8 & U = New \text{ } York, V = Otawa\\
+        0.88 & U = New \text{ } York, V = London
+    \end{cases}\]
+\section*{Determinando :}
+\subsection*{Muito Longe e Não Culturalmente Afins}
+A função \(M(U,V)\) é definida como sendo :
+\[M(U,V) = Q(U,V) \wedge \left[1 - L(U,V)\right] \]0
+Temos que :
+\[1 - L(U,V) = 
+\begin{cases}
+    0 & U = V = Paris \\
+    0.8 & U = Paris, V = Beijing\\
+    0.4 & U = Paris, V = Otawa \\
+    0.2 & U = Paris, V = London \\
+    0.15 & U = New \text{ } York, V = Paris \\
+    0.7 & U = New \text{ } York, V = Beijing \\
+    0.2 & U = New \text{ } York, V = Otawa\\
+    0.12 & U = New \text{ } York, V = London
+\end{cases}\]
+
+\subsection*{Composição Max-Produto de \(Q(U,V)\)  e \(R(V,W)\)}
+
+\[Q(U,V) = \begin{bmatrix}
+    0 & 0.8 & 0.6 & 0.25 \\
+    0.7 & 0.98 & 0.15 & 0.5
+\end{bmatrix}\]
+
+\[R(V, W) = \begin{bmatrix}
+   1 & 0.4 & 0.2 \\
+   0.1 & 0.4 & 0.7 \\
+   0.4 & 0.15 & 0.05 \\
+   0.85 & 0.3 & 0.1
+\end{bmatrix}\]
+
+A operação a ser aplicada é a seguinte :
+
+\[\mu_{p\circ m} (U,V) = \max\left[\min(\mu_p(U,V),\mu_m(V,M))\right]\]
+
+O resultado dessa operação sobre o todos os dados das matrizes retorna o seguinte resultado :
+
+\[P(U,W) = \begin{bmatrix}
+    0.1 & 0.15 & 0.05 \\
+    0.15 & 0.15 & 0.15
+\end{bmatrix}\]
+
+
+
+
